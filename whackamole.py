@@ -1,6 +1,7 @@
 import pygame
+import random
 
-#make a comment
+
 def main():
     try:
         pygame.init()
@@ -14,7 +15,16 @@ def main():
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     running = False
-            screen.fill("light green")
+            screen.fill((52, 235, 232))
+            x = 0
+            while x != 640:
+                x += 32
+                pygame.draw.line(screen, "orange", (x, 0), (x, 512))
+            y = 0
+            while y != 512:
+                y += 32
+                pygame.draw.line(screen, "orange", (0, y), (640, y))
+            screen.blit(mole_image, mole_image.get_rect(topleft=(0, 0)))
             pygame.display.flip()
             clock.tick(60)
     finally:
